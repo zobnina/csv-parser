@@ -7,7 +7,7 @@ public enum TextDelimiter {
     BACKQUOTE("`"),
     BACKSLASH("\\");
 
-    private String frameSymbol;
+    private final String frameSymbol;
 
     TextDelimiter(String symbol) {
         frameSymbol = symbol;

@@ -29,7 +29,7 @@ public class CsvReader {
             }
             return csvDataBuilder.createData(fileData);
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
         return null;
     }

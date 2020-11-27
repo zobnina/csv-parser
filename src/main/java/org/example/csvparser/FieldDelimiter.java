@@ -7,7 +7,7 @@ public enum FieldDelimiter {
     TAB("\t"),
     PIPE("|");
 
-    private String delimiterSymbol;
+    private final String delimiterSymbol;
 
     FieldDelimiter(String symbol) {
         delimiterSymbol = symbol;

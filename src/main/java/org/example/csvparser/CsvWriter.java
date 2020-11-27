@@ -19,15 +19,16 @@ public class CsvWriter {
     public void write(CsvData csvData, String filePath) {
         try {
             File file = new File(filePath);
-            if (!file.exists()) {
-                file.createNewFile();
+            boolean isFile = file.exists();
+            if (!isFile) {
+                isFile = file.createNewFile();
             }
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            if (isFile) try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
                 if (config.isHeaders()) writeHeaders(writer, csvData);
                 writeData(writer, csvData);
             }
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
     }
 
