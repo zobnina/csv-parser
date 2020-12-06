@@ -7,13 +7,13 @@ public enum DelimiterSymbol {
     TAB("\t"),
     PIPE("|");
 
-    private final String delimiterSymbol;
+    private final String symbol;
 
     DelimiterSymbol(String symbol) {
-        delimiterSymbol = symbol;
+        this.symbol = symbol;
     }
 
     public String getValue() {
-        return delimiterSymbol;
+        return symbol;
     }
 }

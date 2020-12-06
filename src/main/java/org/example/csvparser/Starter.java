@@ -1,16 +1,21 @@
 package org.example.csvparser;
 
 public class Starter {
-    private static final String USER_DIR = System.getProperty("user.dir");
 
     public static void main(String[] args) {
-        String srcFile1 = USER_DIR + "/src/main/resources/srcFiles/1.csv";
-        String outFile1 = USER_DIR + "/src/main/resources/outFiles/1.csv";
-        CsvConfig config = new CsvConfig();
-        CsvReader reader = new CsvReader(config);
-        CsvData csvData = reader.read(srcFile1);
-        config = new CsvConfig(DelimiterSymbol.COMMA, QuotationSymbol.SINGLE_QUOTE, true);
-        CsvWriter writer = new CsvWriter(config);
-        writer.write(csvData, outFile1);
+        StarterConfig starterConfig = new StarterConfig();
+        CsvConfig readerConfig = new CsvConfig(
+                starterConfig.getSrcDelimiterSymbol(),
+                starterConfig.getSrcQuotationSymbol(),
+                starterConfig.isSrcHeaders());
+        CsvReader reader = new CsvReader(readerConfig);
+        CsvData csvData = reader.read(starterConfig.getSrcFile());
+        CsvConfig writerConfig = new CsvConfig(
+                starterConfig.getOutDelimiterSymbol(),
+                starterConfig.getOutQuotationSymbol(),
+                starterConfig.isOutHeaders()
+        );
+        CsvWriter writer = new CsvWriter(writerConfig);
+        writer.write(csvData, starterConfig.getOutFile());
     }
 }
