@@ -10,12 +10,12 @@ Input:
 4;"А.Кристи ""Десять негритят""";1939
 5;"С.Лем ""Солярис""";1960
 
-; - field delimiter
-" - text delimiter
+; - delimiter symbol
+" - quotation symbol
 
 We can set in code
-, - field delimiter
-' - text delimiter
+, - delimiter symbol
+' - quotation symbol
 
 Output will be:
 1,Л.Толстой "Война и мир" том 1,1873
@@ -23,3 +23,4 @@ Output will be:
 3,'И.Ильф, Е.Петров "Двенадцать стульев"',1928
 4,А.Кристи "Десять негритят",1939
 5,С.Лем "Солярис",1960
+

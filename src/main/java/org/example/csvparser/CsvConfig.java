@@ -1,28 +1,28 @@
 package org.example.csvparser;
 
 public class CsvConfig {
-    private final FieldDelimiter fieldDelimiter;
-    private final TextDelimiter textDelimiter;
+    private final DelimiterSymbol delimiterSymbol;
+    private final QuotationSymbol quotationSymbol;
     private final boolean isHeaders;
 
     public CsvConfig() {
-        fieldDelimiter = FieldDelimiter.COMMA;
-        textDelimiter = TextDelimiter.DOUBLE_QUOTE;
+        delimiterSymbol = DelimiterSymbol.COMMA;
+        quotationSymbol = QuotationSymbol.DOUBLE_QUOTE;
         isHeaders = true;
     }
 
-    public CsvConfig(FieldDelimiter delimiter, TextDelimiter frame, boolean isHeaders) {
-        this.fieldDelimiter = delimiter;
-        this.textDelimiter = frame;
+    public CsvConfig(DelimiterSymbol delimiter, QuotationSymbol frame, boolean isHeaders) {
+        this.delimiterSymbol = delimiter;
+        this.quotationSymbol = frame;
         this.isHeaders = isHeaders;
     }
 
-    public FieldDelimiter getFieldDelimiter() {
-        return fieldDelimiter;
+    public DelimiterSymbol getFieldDelimiter() {
+        return delimiterSymbol;
     }
 
-    public TextDelimiter getTextDelimiter() {
-        return textDelimiter;
+    public QuotationSymbol getQuotationSymbol() {
+        return quotationSymbol;
     }
 
     public boolean isHeaders() {

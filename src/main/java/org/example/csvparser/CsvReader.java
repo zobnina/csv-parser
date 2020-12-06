@@ -35,28 +35,28 @@ public class CsvReader {
     }
 
     private LinkedHashMap<Integer, String> readRow(String row) {
-        String textDelimiter = config.getTextDelimiter().getValue();
-        String fieldDelimiter = config.getFieldDelimiter().getValue();
+        String quotationSymbol = config.getQuotationSymbol().getValue();
+        String delimiterSymbol = config.getFieldDelimiter().getValue();
         StringBuilder fieldBuilder = new StringBuilder();
         String[] delimiterSplitArray = row.split(config.getFieldDelimiter().getValue());
         LinkedHashMap<Integer, String> fieldsValues = new LinkedHashMap<>();
         int columnIndex = 0;
         boolean isBuilding = false;
         for (String segment : delimiterSplitArray) {
-            if (segment.startsWith(textDelimiter) && !segment.endsWith(textDelimiter)) {
+            if (segment.startsWith(quotationSymbol) && !segment.endsWith(quotationSymbol)) {
                 fieldBuilder.setLength(0);
-                fieldBuilder.append(segment).append(fieldDelimiter);
+                fieldBuilder.append(segment).append(delimiterSymbol);
                 isBuilding = true;
-            } else if (isBuilding && segment.endsWith(textDelimiter)) {
+            } else if (isBuilding && segment.endsWith(quotationSymbol)) {
                 fieldBuilder.append(segment);
-                String fieldValue = fieldHelper.removeRedundantTextDelimiters(fieldBuilder.toString());
+                String fieldValue = fieldHelper.removeRedundantQuotationSymbols(fieldBuilder.toString());
                 fieldsValues.put(columnIndex, fieldValue);
                 columnIndex++;
                 isBuilding = false;
             } else if (!isBuilding) {
                 fieldBuilder.setLength(0);
                 fieldBuilder.append(segment);
-                String fieldValue = fieldHelper.removeRedundantTextDelimiters(fieldBuilder.toString());
+                String fieldValue = fieldHelper.removeRedundantQuotationSymbols(fieldBuilder.toString());
                 fieldsValues.put(columnIndex, fieldValue);
                 columnIndex++;
             } else {

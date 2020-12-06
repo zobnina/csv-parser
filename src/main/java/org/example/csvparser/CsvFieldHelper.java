@@ -7,28 +7,28 @@ class CsvFieldHelper {
         this.config = config;
     }
 
-    public String removeRedundantTextDelimiters(String value) {
-        String textDelimiter = config.getTextDelimiter().getValue();
-        if (value.startsWith(textDelimiter) && value.endsWith(textDelimiter)) {
+    public String removeRedundantQuotationSymbols(String value) {
+        String quotationSymbol = config.getQuotationSymbol().getValue();
+        if (value.startsWith(quotationSymbol) && value.endsWith(quotationSymbol)) {
             value = value.substring(1, value.length() - 1);
         }
-        value = value.replaceAll(textDelimiter + textDelimiter, textDelimiter);
+        value = value.replaceAll(quotationSymbol + quotationSymbol, quotationSymbol);
         return value;
     }
 
-    public String addTextDelimiters(String value) {
-        String fieldDelimiter = config.getFieldDelimiter().getValue();
-        String textDelimiter = config.getTextDelimiter().getValue();
+    public String addQuotationSymbols(String value) {
+        String delimiterSymbol = config.getFieldDelimiter().getValue();
+        String quotationSymbol = config.getQuotationSymbol().getValue();
 
-        if (value.contains(textDelimiter)) {
-            value = value.replaceAll(textDelimiter, textDelimiter + textDelimiter);
+        if (value.contains(quotationSymbol)) {
+            value = value.replaceAll(quotationSymbol, quotationSymbol + quotationSymbol);
         }
 
         StringBuilder builder = new StringBuilder();
-        if (value.contains(fieldDelimiter) || value.contains(textDelimiter)) {
-            builder.append(textDelimiter);
+        if (value.contains(delimiterSymbol) || value.contains(quotationSymbol)) {
+            builder.append(quotationSymbol);
             builder.append(value);
-            builder.append(textDelimiter);
+            builder.append(quotationSymbol);
             value = builder.toString();
         }
 

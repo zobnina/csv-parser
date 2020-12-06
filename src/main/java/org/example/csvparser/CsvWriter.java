@@ -47,7 +47,7 @@ public class CsvWriter {
             if (columnIndex.equals(rowData.size() - 1)) {
                 delimiter = "\n";
             }
-            String columnValue = fieldHelper.addTextDelimiters(field.getValue());
+            String columnValue = fieldHelper.addQuotationSymbols(field.getValue());
             writer.write(columnValue + delimiter);
         }
     }

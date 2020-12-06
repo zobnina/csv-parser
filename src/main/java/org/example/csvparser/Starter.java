@@ -9,7 +9,7 @@ public class Starter {
         CsvConfig config = new CsvConfig();
         CsvReader reader = new CsvReader(config);
         CsvData csvData = reader.read(srcFile1);
-        config = new CsvConfig(FieldDelimiter.COMMA, TextDelimiter.SINGLE_QUOTE, true);
+        config = new CsvConfig(DelimiterSymbol.COMMA, QuotationSymbol.SINGLE_QUOTE, true);
         CsvWriter writer = new CsvWriter(config);
         writer.write(csvData, outFile1);
     }

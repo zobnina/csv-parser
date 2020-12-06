@@ -1,6 +1,6 @@
 package org.example.csvparser;
 
-public enum TextDelimiter {
+public enum QuotationSymbol {
 
     DOUBLE_QUOTE("\""),
     SINGLE_QUOTE("'"),
@@ -9,7 +9,7 @@ public enum TextDelimiter {
 
     private final String frameSymbol;
 
-    TextDelimiter(String symbol) {
+    QuotationSymbol(String symbol) {
         frameSymbol = symbol;
     }
 

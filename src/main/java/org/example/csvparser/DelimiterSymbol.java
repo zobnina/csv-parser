@@ -1,6 +1,6 @@
 package org.example.csvparser;
 
-public enum FieldDelimiter {
+public enum DelimiterSymbol {
 
     COMMA(","),
     SEMICOLON(";"),
@@ -9,7 +9,7 @@ public enum FieldDelimiter {
 
     private final String delimiterSymbol;
 
-    FieldDelimiter(String symbol) {
+    DelimiterSymbol(String symbol) {
         delimiterSymbol = symbol;
     }
 
